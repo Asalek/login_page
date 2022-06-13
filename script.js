@@ -8,7 +8,8 @@ const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-const mailChimpKey = "60fdee166fbc81515d062c987bde69e1-us18";
+const mailChimpKey = "ADD HERE YOUR MAILCHIMP API KEY";
+const ContactList = "ADD HERE THE MAILCHIMP CONTACT LIST ID";
 
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/index.html");
@@ -34,10 +35,10 @@ app.post("/", function(req, res){
     };
     var JsonData = JSON.stringify(data);
 
-    const url = "https://us18.api.mailchimp.com/3.0/lists/9eccf11162";
+    const url = "https://us18.api.mailchimp.com/3.0/lists/" + ContactList;
     const option = {
         method : "POST",
-        auth : "asalek:60fdee166fbc81515d062c987bde69e1-us18"
+        auth : "asalek: " + mailChimpKey;
     }
 
     
